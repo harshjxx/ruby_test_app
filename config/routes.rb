@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :order_tables
+  resources :orders
+  resources :addresses
   get 'signup', to: 'users#new'
   resources :users, expect:[:new]  
   resources :products

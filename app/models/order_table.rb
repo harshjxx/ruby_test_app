@@ -1,0 +1,2 @@
+class OrderTable < ApplicationRecord
+end
