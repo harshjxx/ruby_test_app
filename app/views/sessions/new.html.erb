@@ -1,0 +1,18 @@
+<h1 align="center">log in</h1>
+
+<%= form_for(:session, :html => {class:"form-horizantal",role: "form"}, url: login_path) do |form| %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email ,placeholder:"enter email" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password ,placeholder:"enter password"%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Log in"%>
+  </div>
+<% end %>
