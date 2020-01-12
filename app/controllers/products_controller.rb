@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(page: 1, per_page: 2)
+    @products = Product.all.paginate(page: params[:page], per_page: 20)
   end
 
   # GET /products/1
@@ -25,7 +26,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.user=User.first
+    @product.user=  current_user
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -71,4 +72,11 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:pname, :pprice, :psku, :pimage)
     end
+
+    def require_same_user
+      if current_user != @product.user and !current_user.admin?
+        flash[:notice]= "only admin can change this"
+        redirect_to root_path
+      end
+    end 
 end
