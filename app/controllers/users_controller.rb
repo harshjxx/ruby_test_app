@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update,:destroy]
+  before_action :require_action, only: [:destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+      @users = User.paginate(page: params[:page],per_page: 5)
   end
 
   # GET /users/1
@@ -15,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.addresses.new
   end
 
   # GET /users/1/edit
@@ -24,8 +27,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    # byebug
+     byebug
     @user = User.new(user_params)
+
+    # @user.addresses.first.user_id= current_user.id  
 
     respond_to do |format|
       if @user.save
@@ -70,6 +75,20 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, addresses_attributes:[:housename,:street])
+    end
+
+    def require_same_user
+      if current_user != @user and !current_user.admin?
+        flash[:notice] = "you or admin can edit your account"
+        redirect_to root_path
+      end
+    end
+
+    def require_admin
+      if logged_in? and !current_user.admin?
+        flash[:notice]= "only admin can do this"
+        redirect_to root_path
+      end
     end
 end

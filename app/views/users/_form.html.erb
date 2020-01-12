@@ -26,6 +26,17 @@
     <%= form.password_field :password ,placeholder:"enter password"%>
   </div>
 
+    <%= form.fields_for :addresses do |p| %>
+        <div class="field">
+        <%= p.label :housename %>
+        <%= p.text_field :housename, placeholder: "enter housename" %>
+        </div>
+        <div class="field">
+        <%= p.label :street %>
+        <%= p.text_field :street, placeholder: "enter street" %>
+        </div>
+    <% end %>
+
   <div class="actions">
     <%= form.submit(@user.new_record? ? "Signup" : "Update Account")%>
   </div>

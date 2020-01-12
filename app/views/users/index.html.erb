@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
-
+<div>
+  <%= will_paginate%>
+</div>
 <table>
   <thead>
     <tr>
@@ -16,23 +18,16 @@
       <tr>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        <%= link_to 'Show', user %>
+        <% if logged_in? && current_user.admin?%>
+        <%= link_to 'Edit', edit_user_path(user) %>
+        <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
-
-<%
-=begin%>
- this is temporary logout link 
-<%
-=end%>
-
-
-<%= link_to 'Log Out', logout_path, method: :delete %>

@@ -20,5 +20,9 @@
   <%= @product.pimage %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
+<%
+=begin%>
+ <%= link_to 'Edit', edit_product_path(@product) %> | 
+<%
+=end%>
 <%= link_to 'Back', products_path %>

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
- admin-page
-  root 'pages#home'
+ 
+  root 'products#index'
 
   resources :order_tables
   resources :orders
   resources :addresses
- master
+
   get 'signup', to: 'users#new'
   resources :users, expect:[:new]  
   resources :products
