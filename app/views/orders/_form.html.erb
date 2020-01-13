@@ -31,6 +31,19 @@
     <%= form.text_field :order_type %>
   </div>
 
+  <div class="field col-xs-12" >
+  <%= form.label :product_id %>
+  <%= form.select :product_id, options_for_select(Product.all.collect{|c| [c.pname,c.id]}) %>
+  </div>
+
+  <div class="field col-xs-12" >
+  <%= form.label :user_id %>
+  <%= form.select :user_id, options_for_select(User.all.collect{|c| [c.username,c.id]}) %>
+  </div>
+  <div class="field col-xs-12" >
+  <%= form.label :address %>
+  <%= form.select :address_id, options_for_select(Address.all.collect{|c| [c.street,c.id]}) %>
+  </div>
   <div class="actions">
     <%= form.submit %>
   </div>

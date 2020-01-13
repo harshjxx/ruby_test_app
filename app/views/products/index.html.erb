@@ -25,15 +25,15 @@
             <% if logged_in? && current_user.admin?%>
             <small>Created by: <%= product.user.username if product.user %>,
                                 <%= time_ago_in_words(product.created_at) %>
-                                last updated: <%= time_ago_in_words(product.updated_at) %> ago 
+                                last updated: <%= time_ago_in_words(product.updated_at) %> ago
             </small>
             <% end %>
             </td>
 
             <td><%= product.pprice %></td>
             <td><%= product.psku %></td>
-            <td><%= product.pimage %></td>
-            <td><%= link_to 'Show', product %> 
+            <td><%= image_tag(product.pimage) %></td>
+            <td><%= link_to 'Show', product %>
             <%  if logged_in? && (current_user==product.user || current_user.admin?) %>
             <%= link_to 'Edit', edit_product_path(product) %>
             <% end %>
@@ -69,14 +69,14 @@
             <% if logged_in? && current_user.admin?%>
             <small>Created by: <%= product.user.username if product.user %>,
                                 <%= time_ago_in_words(product.created_at) %>
-                                last updated: <%= time_ago_in_words(product.updated_at) %> ago 
+                                last updated: <%= time_ago_in_words(product.updated_at) %> ago
             </small>
             <% end %>
             </td>
 
             <td><%= product.pprice %></td>
             <td><%= product.psku %></td>
-            <td><%= product.pimage %></td>
+            <td><%= image_tag(product.pimage) %></td>
             <td><%= link_to 'Show', product %> |
             <%  if logged_in? && (current_user==product.user || current_user.admin?) %>
             <%= link_to 'Edit', edit_product_path(product) %>|
@@ -89,4 +89,3 @@
       </tbody>
     </table>
   <% end %>
-    

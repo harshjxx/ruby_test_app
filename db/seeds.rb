@@ -9,6 +9,7 @@
   Product.create ([{pname: Faker::Commerce.product_name,
     pprice:Faker::Commerce.price,
     psku:Faker::Commerce.promotion_code,
+    pimage:Faker::Avatar.image,
     user_id:'1'
     }])
   end
