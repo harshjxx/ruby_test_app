@@ -1,28 +1,28 @@
 <p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  
+  <div class="container">
+  
+      <div class="row col-xl-12">
+        <div class="col-sm-6">
+          <p>
+      <%= image_tag(@product.pimage) %></p>
+        </div>
+        <div align="left" class="col-sm-6" style="color:black">
+          <br>
+          
+          <p><strong> Name:</strong>   <%= @product.pname %></p><br>
 
-<p>
-  <strong>Pname:</strong>
-  <%= @product.pname %>
-</p>
+          <p><small><strong>Product SKU:</strong>   <%= @product.psku %> </small></p><br>
 
-<p>
-  <strong>Pprice:</strong>
-  <%= @product.pprice %>
-</p>
+          <p><strong>Description:</strong> <small>  <%= @product.description %></small></p><br>
+          <br>
+          <br>
+          <p><strong>Price:</strong> <strong>$</strong>  <%= @product.pprice %></p><br>
 
-<p>
-  <strong>Psku:</strong>
-  <%= @product.psku %>
-</p>
+        </div>
+      </div>
+    </div>
+  <p><a> <%= link_to "buy now",new_order_path(product_id: @product.id ), class:"btn btn-primary btn-lg" %></a></p> <p><a><%= link_to 'Back', products_path,class: "btn btn-primary" %></a></p>
+</div>
 
-<p>
-  <strong>Pimage:</strong>
-  <%= image_tag(@product.pimage) %>
-</p>
-
-<%
-=begin%>
- <%= link_to 'Edit', edit_product_path(@product) %> |
-<%
-=end%>
-<%= link_to 'Back', products_path %>

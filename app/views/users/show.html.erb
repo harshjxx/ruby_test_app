@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
+<div class="jumbotron">
+  
+  <div class="container">
+  
+      <div class="row col-xl-12">
+        <div class="col-sm-6">
+          <p style="color: black">UserImage</p>
+        </div>
+        <div align="left" class="col-sm-6" style="color:black">
+          <br>
+          
+          <p><strong> Name:</strong>   <%= @user.username %></p><br>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+          <p><strong>Email:</strong> <small>  <%= @user.email %></small></p><br>
+          <br>
+          <br>
+          <h3>Address</h3>
+          <p><strong>House Name:</strong> <strong>$</strong>  <%= @user.addresses.first.housename%></p><br>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        </div>
+      </div>
+    </div>
+  <p><a><%= link_to 'Edit', edit_user_path(@user),class: "btn btn-primary btn-lg" %> <%= link_to 'Back', products_path,class: "btn btn-primary btn-lg" %></a></p>
+</div>  

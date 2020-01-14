@@ -78,5 +78,5 @@ class ProductsController < ApplicationController
         flash[:notice]= "only admin can change this"
         redirect_to root_path
       end
-    end 
+    end
 end

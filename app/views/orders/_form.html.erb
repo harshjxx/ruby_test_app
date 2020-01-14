@@ -32,9 +32,22 @@
   </div>
 
   <div class="field col-xs-12" >
-  <%= form.label :product_id %>
-  <%= form.select :product_id, options_for_select(Product.all.collect{|c| [c.pname,c.id]}) %>
+  <%= form.label :Product_ID %>
+  
+  <%= form.text_field :product_id,:value => "#{Product.find(params[:product_id]).id}", :readonly => true %>
+  <%
+=begin%>
+ <%= form.select :product_id, options_for_select(Product.find(params[:id]){|c| [c.pname,c.id]}) %> 
+<%
+=end%>
   </div>
+
+  <div class="field col-xs-12" >
+  <%= form.label :'Product name' %>
+  
+  <%= form.text_field :pname,:value => "#{Product.find(params[:product_id]).pname}", :readonly => true %>
+  </div>
+
 
   <div class="field col-xs-12" >
   <%= form.label :user_id %>

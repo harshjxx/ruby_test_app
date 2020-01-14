@@ -5,11 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-50.times do
+22.times do
   Product.create ([{pname: Faker::Commerce.product_name,
     pprice:Faker::Commerce.price,
     psku:Faker::Commerce.promotion_code,
     pimage:Faker::Avatar.image,
-    user_id:'1'
+    user_id:'1',
+    description:Faker::Vehicle.car_options
     }])
   end
