@@ -1,28 +1,35 @@
-<p id="notice"><%= notice %></p>
-<div class="jumbotron">
-  
+<!-- <p id="notice"><%= notice %></p> -->
+
   <div class="container">
   
-      <div class="row col-xl-12">
-        <div class="col-sm-6">
-          <p>
-      <%= image_tag(@product.pimage) %></p>
-        </div>
-        <div align="left" class="col-sm-6" style="color:black">
-          <br>
-          
-          <p><strong> Name:</strong>   <%= @product.pname %></p><br>
-
-          <p><small><strong>Product SKU:</strong>   <%= @product.psku %> </small></p><br>
-
-          <p><strong>Description:</strong> <small>  <%= @product.description %></small></p><br>
-          <br>
-          <br>
-          <p><strong>Price:</strong> <strong>$</strong>  <%= @product.pprice %></p><br>
-
+      <div class="marg">
+        <div class="row col-xl-12">
+          <div class="col-sm-6 text-center">
+            <p><%= image_tag(@product.pimage) %></p>
+          </div>
+          <div class="col-sm-6">
+            <div class="product-desc">
+              <div class="product-title">
+                <strong><%= @product.pname %></strong>
+              </div>
+              <br>
+              <div class="">
+                <p><small>Product SKU: <%= @product.psku %> </small></p><br>
+              </div>
+              <div class="">
+                <p><strong>Description:</strong><br> <small>  <%= @product.description %></small></p><br>
+              </div>
+              <div class="">
+                <p><strong>Price:</strong> <strong>$</strong>  <%= @product.pprice %></p><br>
+              </div>
+            
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  <p><a> <%= link_to "buy now",new_order_path(product_id: @product.id ), class:"btn btn-primary btn-lg" %></a></p> <p><a><%= link_to 'Back', products_path,class: "btn btn-primary" %></a></p>
-</div>
+  <!-- <p><a> <%= link_to "buy now",new_order_path(product_id: @product.id ), class:"btn btn-primary btn-lg" %></a></p> <p><a><%= link_to 'Back', products_path,class: "btn btn-primary" %></a></p> -->
+  <!-- <div class="btn btn-primary"> Buy Now</div> <br> -->
+  <div class="button-marg text-center"><p><a><%= link_to 'Back', products_path,class: "btn btn-primary" %></a></p></div>
+
 

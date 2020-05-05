@@ -1,29 +1,26 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_order_for_Product, only: [:new]
-  # GET /orders
-  # GET /orders.json
+  
   def index
     @orders = Order.all
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
+  
   def show
   end
 
-  # GET /orders/new
+ 
   def new
     #byebug
     @order = Order.new
   end
 
-  # GET /orders/1/edit
+  
   def edit
   end
 
-  # POST /orders
-  # POST /orders.json
+  
   def create
     @order = Order.new(order_params)
     #here @product=find.productfind(:product);
@@ -38,8 +35,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /orders/1
-  # PATCH/PUT /orders/1.json
+
   def update
     respond_to do |format|
       if @order.update(order_params)
@@ -52,8 +48,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1
-  # DELETE /orders/1.json
+  
   def destroy
     @order.destroy
     respond_to do |format|

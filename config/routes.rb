@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
  
-  root 'products#index'
+  # root 'products#index'
+  root 'sessions#new'
 
   resources :order_tables
   resources :orders

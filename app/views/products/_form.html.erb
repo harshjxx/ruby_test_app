@@ -11,27 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :pname %>
-    <%= form.text_field :pname %>
-  </div>
 
-  <div class="field">
-    <%= form.label :pprice %>
-    <%= form.text_field :pprice %>
+  <div class="login-page">
+  <div class="form">
+    <form class="register-form">
+        <div class="form-title">
+          <p>Add Product</p>
+        </div>
+        <div class="text-left">
+          <%= form.label :"Product Name" %>
+        </div>
+        <%= form.text_field :pname, placeholder:"Enter Productname"%>
+        <div class="text-left">
+          <%= form.label :"Product Price" %>
+        </div>
+        <%= form.text_field :pprice ,placeholder:"Enter  Price" %>
+        <div class="text-left">
+          <%= form.label :"Product SKU" %>
+        </div>
+        <%= form.text_field :psku ,placeholder:"Enter SKU"%>
+         <div class="text-left">
+          <%= form.label :Description %>
+        </div>
+        <%= form.text_field :description ,placeholder:"Enter description"%>
+        <%= form.hidden_field :pimage ,value: @imageplace %>
+        <button>Add Product</button>
   </div>
-
-  <div class="field">
-    <%= form.label :psku %>
-    <%= form.text_field :psku %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pimage %>
-    <%= form.text_field :pimage %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>

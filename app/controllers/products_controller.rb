@@ -2,28 +2,28 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
-  # GET /products
-  # GET /products.json
+  
   def index
-    @products = Product.all.paginate(page: params[:page], per_page: 20)
+    @products = Product.all.reverse_order.paginate(page: params[:page], per_page: 10)
   end
 
-  # GET /products/1
-  # GET /products/1.json
+ 
   def show
   end
 
-  # GET /products/new
+  
   def new
+    
     @product = Product.new
+    @imageplace = Faker::Avatar.image 
+
   end
 
-  # GET /products/1/edit
+
   def edit
   end
 
-  # POST /products
-  # POST /products.json
+  
   def create
     @product = Product.new(product_params)
     @product.user=  current_user
@@ -38,8 +38,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
+  
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -52,8 +51,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  # DELETE /products/1
-  # DELETE /products/1.json
+
   def destroy
     @product.destroy
     respond_to do |format|
@@ -70,7 +68,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:pname, :pprice, :psku, :pimage)
+      params.require(:product).permit(:pname, :pprice, :psku, :pimage,:description)
     end
 
     def require_same_user

@@ -1,11 +1,10 @@
-<p id="notice"><%= notice %></p>
-
+<div class="text-center"><p id="notice"><%= notice %></p></div>
 <h1 align="center">Users</h1>
-<div>
-  <%= will_paginate%>
+<div class="text-center">
+  <%= will_paginate @users%>
 </div>
 <div class="container">
-    <table class="table">
+    <table class="table table-font">
       <thead>
         <tr>
           <th>Username</th>
@@ -14,9 +13,10 @@
         </tr>
       </thead>
 
+
       <tbody>
         <% @users.each do |user| %>
-          <tr>
+          <tr class="table-font">
             <td><%= user.username %></td>
             <td><%= user.email %></td>
             <td>
@@ -30,4 +30,7 @@
         <% end %>
       </tbody>
     </table>
+</div>
+<div class="text-center">
+  <%= will_paginate @users%>
 </div>

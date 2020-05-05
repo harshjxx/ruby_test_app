@@ -1,28 +1,25 @@
 class OrderTablesController < ApplicationController
   before_action :set_order_table, only: [:show, :edit, :update, :destroy]
 
-  # GET /order_tables
-  # GET /order_tables.json
+  
   def index
     @order_tables = OrderTable.all
   end
 
-  # GET /order_tables/1
-  # GET /order_tables/1.json
+  
   def show
   end
 
-  # GET /order_tables/new
+ 
   def new
     @order_table = OrderTable.new
   end
 
-  # GET /order_tables/1/edit
+ 
   def edit
   end
 
-  # POST /order_tables
-  # POST /order_tables.json
+
   def create
     @order_table = OrderTable.new(order_table_params)
 
@@ -37,8 +34,7 @@ class OrderTablesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /order_tables/1
-  # PATCH/PUT /order_tables/1.json
+  
   def update
     respond_to do |format|
       if @order_table.update(order_table_params)
@@ -51,8 +47,7 @@ class OrderTablesController < ApplicationController
     end
   end
 
-  # DELETE /order_tables/1
-  # DELETE /order_tables/1.json
+ 
   def destroy
     @order_table.destroy
     respond_to do |format|

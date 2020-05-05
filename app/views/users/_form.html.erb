@@ -1,51 +1,83 @@
 <%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<% if user.errors.any? %>
+<div id="error_explanation">
+  <!-- <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2> -->
 
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username ,placeholder:"enter username" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.email_field :email ,placeholder:"enter email" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password ,placeholder:"enter password"%>
-  </div>
-
-    <%= form.fields_for :addresses do |p| %>
-        <div class="field">
-        <%= p.label :housename %>
-        <%= p.text_field :housename, placeholder: "enter housename" %>
-        </div>
-        <div class="field">
-        <%= p.label :street %>
-        <%= p.text_field :street, placeholder: "enter street" %>
-        </div>
-        <div class="field">
-        <%= p.label :city %>
-        <%= p.text_field :city, placeholder: "enter city" %>
-        </div>
-        <div class="field">
-        <%= p.label :pincode %>
-        <%= p.text_field :pincode, placeholder: "enter city" %>
-        </div>
+  <ul>
+    <% user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
     <% end %>
-
-  <div class="actions">
-    <%= form.submit(@user.new_record? ? "Signup" : "Update Account")%>
+  </ul>
+</div>
+<% end %>
+<div class="login-page">
+  <div class="form">
+   
+    <form class="login-form">
+      <form class="register-form">
+        <div class="form-title">
+          <p><%=@user.new_record? ? "Signup" : "Update Account"%></p>
+        </div>
+        <div class="text-left">
+          <%= form.label :username %>
+        </div>
+        <%= form.text_field :username ,placeholder:"enter username" %>
+        <div class="text-left">
+          <%= form.label :email %>
+        </div>
+        <%= form.email_field :email ,placeholder:"enter email" %>
+        <div class="text-left">
+          <%= form.label :password %>
+        </div>
+        <%= form.password_field :password ,placeholder:"enter password"%>
+        <button><%=@user.new_record? ? "Signup" : "Update Account"%></button>
+        <!-- <div class="actions">
+          <%= form.submit(@user.new_record? ? "Signup" : "Update Account")%>
+        </div> -->
+        <p class="message">Already registered? <%= link_to 'Log in',login_path %></p>
+        <!-- <button>login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p> -->
+      </form>
   </div>
+</div>
+
+
+<!-- <div class="field">
+  <%= form.label :username %>
+  <%= form.text_field :username ,placeholder:"enter username" %>
+</div>
+
+<div class="field">
+  <%= form.label :email %>
+  <%= form.email_field :email ,placeholder:"enter email" %>
+</div>
+
+<div class="field">
+  <%= form.label :password %>
+  <%= form.password_field :password ,placeholder:"enter password"%>
+</div> -->
+
+<!-- <%= form.fields_for :addresses do |p| %>
+<div class="field">
+  <%= p.label :housename %>
+  <%= p.text_field :housename, placeholder: "enter housename" %>
+</div>
+<div class="field">
+  <%= p.label :street %>
+  <%= p.text_field :street, placeholder: "enter street" %>
+</div>
+<div class="field">
+  <%= p.label :city %>
+  <%= p.text_field :city, placeholder: "enter city" %>
+</div>
+<div class="field">
+  <%= p.label :pincode %>
+  <%= p.text_field :pincode, placeholder: "enter city" %>
+</div>
+<% end %>
+
+<div class="actions">
+  <%= form.submit(@user.new_record? ? "Signup" : "Update Account")%>
+</div> -->
+
 <% end %>
