@@ -5,7 +5,10 @@ class Product < ApplicationRecord
 
   validates :user_id, presence: true
 
-
+  validates :pname,:description,:pprice,:psku, presence: true
+  # validates :pprice, presence: true
+  # validates :psku, presence: true
+  # validates :description, presence: true
 
 
 end
