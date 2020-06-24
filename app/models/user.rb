@@ -7,8 +7,11 @@ class User < ApplicationRecord
   # accepts_nested_attributes_for :addresses
 
   before_save {self.email = email.downcase}
+  VALID_USERNAME_REGEX= /\A[a-zA-Z0-9]+\z/
 
-  validates :username, presence: true, length: {minimum:3, maximum:255}
+  # Only contains alphanumeric characters, underscore and dot.
+
+  validates :username, presence: true, length: {minimum:3, maximum:255}, format: {with: VALID_USERNAME_REGEX}
   
   # validates_associates : email addresses
   VALID_EMAIL_REGEX= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -21,7 +24,7 @@ class User < ApplicationRecord
   (?=.*[A-Z])        # Must contain an upper case character
   (?=.*[[:^alnum:]]) # Must contain a symbol
   /x
-  validates :password, presence:true , length: {minimum: 8}, format: {with: VALID_PASSWORD_REGEX } 
+  validates :password, presence:true , length: {minimum: 5}, format: {with: VALID_PASSWORD_REGEX } 
   has_secure_password
 
 
